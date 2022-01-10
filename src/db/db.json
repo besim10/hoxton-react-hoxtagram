@@ -35,6 +35,12 @@
           "imageId": 2
         }
       ]
+    },
+    {
+      "title": "Cute cat",
+      "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.669xw:1.00xh;0.166xw,0&resize=640:*",
+      "likes": 1,
+      "id": 3
     }
   ],
   "comments": [
@@ -77,6 +83,11 @@
       "imageId": 1,
       "content": "hej",
       "id": 10
+    },
+    {
+      "imageId": 3,
+      "content": "How beautiful!!!",
+      "id": 11
     }
   ]
 }

@@ -13,13 +13,33 @@ function App() {
   };
 
   useEffect(getCardsFromServer, [cards]);
-
+  const createCardOnServer = (card) => {
+    return fetch("http://localhost:3000/images", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(card),
+    });
+  };
   return (
     <div className="App">
       <Logo />
 
       <section className="image-container">
-        <form className="comment-form image-card">
+        <form
+          onSubmit={function (event) {
+            event.preventDefault();
+            const titleValue = event.target.title.value;
+            const urlValue = event.target.image.value;
+            createCardOnServer({
+              title: titleValue,
+              image: urlValue,
+              likes: 0,
+            });
+          }}
+          className="comment-form image-card"
+        >
           <h2 className="title">New Post</h2>
           <input
             className="comment-input"

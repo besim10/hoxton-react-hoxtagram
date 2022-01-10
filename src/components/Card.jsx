@@ -13,7 +13,7 @@ const Card = (props) => {
     return fetch(`http://localhost:3000/comments/`, {
       method: "POST",
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(card),
     }).then((resp) => resp.json());
