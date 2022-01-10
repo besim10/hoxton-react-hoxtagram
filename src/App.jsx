@@ -37,6 +37,7 @@ function App() {
               image: urlValue,
               likes: 0,
             });
+            event.target.reset();
           }}
           className="comment-form image-card"
         >

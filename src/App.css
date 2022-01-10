@@ -48,6 +48,15 @@ img {
     color: #000000dd;
 }
 
+.title button {
+    float: right;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    display: grid;
+}
+
 .likes-section {
     display: flex;
     justify-content: space-between;
@@ -92,6 +101,22 @@ img {
 .comments li {
     margin: 2px 0;
     letter-spacing: 0.2px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 0.2rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.219);
+}
+
+.comments li:last-child {
+    border-bottom: none;
+}
+
+.comments button {
+    border: 1px solid gray;
+    background-color: rgb(92, 114, 238);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .comment-form {

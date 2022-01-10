@@ -41,6 +41,12 @@
       "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.669xw:1.00xh;0.166xw,0&resize=640:*",
       "likes": 1,
       "id": 3
+    },
+    {
+      "title": "Cute dog!!",
+      "image": "https://i.pinimg.com/550x/be/82/15/be821544fc5f328567cb538f96edb49a.jpg",
+      "likes": 3,
+      "id": 4
     }
   ],
   "comments": [
@@ -55,24 +61,9 @@
       "imageId": 2
     },
     {
-      "imageId": 1,
-      "content": "Hes a good boy!!",
-      "id": 5
-    },
-    {
-      "imageId": 1,
-      "content": "besim",
-      "id": 6
-    },
-    {
       "imageId": 2,
       "content": "hej",
       "id": 7
-    },
-    {
-      "imageId": 1,
-      "content": "besim",
-      "id": 8
     },
     {
       "imageId": 1,
@@ -88,6 +79,11 @@
       "imageId": 3,
       "content": "How beautiful!!!",
       "id": 11
+    },
+    {
+      "imageId": 4,
+      "content": "how beautiful",
+      "id": 12
     }
   ]
 }

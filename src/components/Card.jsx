@@ -18,9 +18,29 @@ const Card = (props) => {
       body: JSON.stringify(card),
     }).then((resp) => resp.json());
   };
+
+  const deleteCommentOnServer = (id) => {
+    return fetch(`http://localhost:3000/comments/${id}`, {
+      method: "DELETE",
+    }).then((resp) => resp.json());
+  };
+  const deleteCardOnServer = (id) => {
+    return fetch(`http://localhost:3000/images/${id}`, {
+      method: "DELETE",
+    }).then((resp) => resp.json());
+  };
   return (
     <article className="image-card">
-      <h2 className="title">{`${props.card.title}`}</h2>
+      <h2 className="title">
+        {`${props.card.title}`}
+        <button
+          onClick={() => {
+            deleteCardOnServer(props.card.id);
+          }}
+        >
+          X
+        </button>
+      </h2>
       <img src={`${props.card.image}`} className="image" />
       <div className="likes-section">
         <span className="likes">{`${props.card.likes} likes`}</span>
@@ -38,7 +58,17 @@ const Card = (props) => {
       </div>
       <ul className="comments">
         {props.card.comments.map((comment) => (
-          <li key={comment.id}>{comment.content}</li>
+          <li key={comment.id}>
+            {comment.content}
+            <button
+              onClick={() => {
+                deleteCommentOnServer(comment.id);
+              }}
+              className="comments-delete-btn"
+            >
+              Delete
+            </button>
+          </li>
         ))}
       </ul>
       <form
