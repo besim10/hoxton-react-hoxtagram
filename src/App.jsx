@@ -5,14 +5,15 @@ import Logo from "./components/logo";
 
 function App() {
   const [cards, setCards] = useState([]);
-
+  const [search, setSearch] = useState("");
   const getCardsFromServer = () => {
     fetch("http://localhost:3000/images")
       .then((resp) => resp.json())
       .then((responseFromServer) => setCards(responseFromServer));
   };
 
-  useEffect(getCardsFromServer, [cards]);
+  useEffect(getCardsFromServer, []);
+
   const createCardOnServer = (card) => {
     return fetch("http://localhost:3000/images", {
       method: "POST",
@@ -20,13 +21,32 @@ function App() {
         "Content-type": "application/json",
       },
       body: JSON.stringify(card),
-    });
+    }).then((resp) => resp.json());
+  };
+
+  const getCardsToDisplay = () => {
+    let updatedCards = cards;
+    updatedCards = updatedCards.filter((card) =>
+      card.title.toUpperCase().includes(search.toUpperCase())
+    );
+    return updatedCards;
   };
   return (
     <div className="App">
       <Logo />
 
       <section className="image-container">
+        <label className="search-label">
+          Search by Title:
+          <input
+            onChange={(event) => {
+              setSearch(event.target.value);
+            }}
+            type="text"
+            placeholder="type here..."
+          />
+        </label>
+
         <form
           onSubmit={function (event) {
             event.preventDefault();
@@ -36,6 +56,16 @@ function App() {
               title: titleValue,
               image: urlValue,
               likes: 0,
+            }).then((cardFromServer) => {
+              let updatedCards = JSON.parse(JSON.stringify(cards));
+              updatedCards.push({
+                id: cardFromServer.id,
+                title: cardFromServer.title,
+                likes: 0,
+                comments: [],
+                image: cardFromServer.image,
+              });
+              setCards(updatedCards);
             });
             event.target.reset();
           }}
@@ -60,8 +90,8 @@ function App() {
             Post
           </button>
         </form>
-        {cards.map((card) => (
-          <Card key={card.id} card={card} />
+        {getCardsToDisplay().map((card) => (
+          <Card key={card.id} cards={cards} setCards={setCards} card={card} />
         ))}
       </section>
     </div>

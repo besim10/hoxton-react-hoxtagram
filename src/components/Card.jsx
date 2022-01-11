@@ -1,5 +1,5 @@
 const Card = (props) => {
-  const updateCardInServer = (card) => {
+  const updateLikesInServer = (card) => {
     return fetch(`http://localhost:3000/images/${card.id}`, {
       method: "PATCH",
       headers: {
@@ -7,6 +7,12 @@ const Card = (props) => {
       },
       body: JSON.stringify(card),
     }).then((resp) => resp.json());
+  };
+  const updateLikesInState = () => {
+    let updatedCards = JSON.parse(JSON.stringify(props.cards));
+    const match = updatedCards.find((target) => target.id === props.card.id);
+    match.likes++;
+    props.setCards(updatedCards);
   };
 
   const createCommentInServer = (card) => {
@@ -29,6 +35,14 @@ const Card = (props) => {
       method: "DELETE",
     }).then((resp) => resp.json());
   };
+  const deleteCardOnState = () => {
+    let updatedCards = JSON.parse(JSON.stringify(props.cards));
+    const filteredCards = updatedCards.filter(
+      (targetId) => targetId.id !== props.card.id
+    );
+    updatedCards = filteredCards;
+    props.setCards(updatedCards);
+  };
   return (
     <article className="image-card">
       <h2 className="title">
@@ -36,6 +50,8 @@ const Card = (props) => {
         <button
           onClick={() => {
             deleteCardOnServer(props.card.id);
+
+            deleteCardOnState();
           }}
         >
           X
@@ -46,10 +62,12 @@ const Card = (props) => {
         <span className="likes">{`${props.card.likes} likes`}</span>
         <button
           onClick={() => {
-            updateCardInServer({
+            updateLikesInServer({
               id: props.card.id,
               likes: props.card.likes + 1,
             });
+
+            updateLikesInState();
           }}
           className="like-button"
         >
@@ -63,6 +81,19 @@ const Card = (props) => {
             <button
               onClick={() => {
                 deleteCommentOnServer(comment.id);
+
+                let updatedCards = JSON.parse(JSON.stringify(props.cards));
+
+                const filteredComments = props.card.comments.filter(
+                  (targetComment) => targetComment.id !== comment.id
+                );
+
+                const match = updatedCards.find(
+                  (oneCard) => oneCard.id === props.card.id
+                );
+
+                match.comments = filteredComments;
+                props.setCards(updatedCards);
               }}
               className="comments-delete-btn"
             >
@@ -74,11 +105,21 @@ const Card = (props) => {
       <form
         onSubmit={(event) => {
           event.preventDefault();
+
           const valueOfComment = event.target.comment.value;
+
           createCommentInServer({
             imageId: props.card.id,
             content: valueOfComment,
+          }).then((commentFromServer) => {
+            let updatedCards = JSON.parse(JSON.stringify(props.cards));
+            const match = updatedCards.find(
+              (targetCard) => targetCard.id === props.card.id
+            );
+            match.comments.push(commentFromServer);
+            props.setCards(updatedCards);
           });
+
           event.target.reset();
         }}
         className="comment-form"

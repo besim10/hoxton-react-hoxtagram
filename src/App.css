@@ -27,6 +27,26 @@ img {
     gap: 25px;
 }
 
+.search-label {
+    color: #275079;
+    display: grid;
+    grid-auto-flow: column;
+    place-items: center;
+    gap: 0.5rem;
+}
+
+.search-label input {
+    padding: 0.3rem;
+    border: 1px solid #275079;
+    outline: none;
+    border-radius: 1rem;
+    background: none;
+}
+
+.search-label input::placeholder {
+    color: #275079;
+}
+
 .image-card {
     width: 350px;
     border: 1px solid #00000020;

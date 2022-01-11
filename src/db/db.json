@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Coder dog",
-      "likes": 43,
+      "likes": 69,
       "image": "./src/assets/coder-dog.png",
       "comments": [
         {
@@ -19,71 +19,44 @@
       ]
     },
     {
-      "id": 2,
-      "title": "Coder cats",
-      "likes": 12,
-      "image": "./src/assets/coder-cat.jpeg",
-      "comments": [
-        {
-          "id": 2,
-          "content": "He has the paws for this!",
-          "imageId": 2
-        },
-        {
-          "id": 3,
-          "content": "Someone's in trouble!",
-          "imageId": 2
-        }
-      ]
-    },
-    {
       "title": "Cute cat",
       "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/cute-cat-photos-1593441022.jpg?crop=0.669xw:1.00xh;0.166xw,0&resize=640:*",
-      "likes": 1,
+      "likes": 2,
       "id": 3
     },
     {
       "title": "Cute dog!!",
       "image": "https://i.pinimg.com/550x/be/82/15/be821544fc5f328567cb538f96edb49a.jpg",
-      "likes": 3,
+      "likes": 10,
       "id": 4
+    },
+    {
+      "title": "Dog with flower!",
+      "image": "https://cdn1.tedsby.com/storage/5/0/1/501631/collectible-dog-belle-white-chihuahua-puppy-with-rose-in-its-mouth-felted-interior-toy-ooak.jpg",
+      "likes": 2,
+      "id": 5
     }
   ],
   "comments": [
     {
-      "id": 2,
-      "content": "He has the paws for this!",
-      "imageId": 2
-    },
-    {
-      "id": 3,
-      "content": "Someone's in trouble!",
-      "imageId": 2
-    },
-    {
-      "imageId": 2,
-      "content": "hej",
-      "id": 7
-    },
-    {
-      "imageId": 1,
-      "content": "besim",
-      "id": 9
-    },
-    {
       "imageId": 1,
       "content": "hej",
-      "id": 10
+      "id": 13
     },
     {
       "imageId": 3,
-      "content": "How beautiful!!!",
-      "id": 11
+      "content": "hej",
+      "id": 29
     },
     {
-      "imageId": 4,
-      "content": "how beautiful",
-      "id": 12
+      "imageId": 3,
+      "content": "Wow!",
+      "id": 30
+    },
+    {
+      "imageId": 1,
+      "content": "hej",
+      "id": 31
     }
   ]
 }
