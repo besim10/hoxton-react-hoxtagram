@@ -8,10 +8,79 @@ body {
     padding: 20px;
     text-align: center;
     background-color: #fafafa;
+    display: grid;
+    place-items: center;
 }
 
 img {
     max-width: 100%;
+}
+
+header {
+    display: grid;
+    grid-auto-flow: column;
+    align-items: center;
+}
+
+.modal-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.267);
+    backdrop-filter: blur(2px);
+    display: grid;
+    place-items: center;
+}
+
+.modal {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    position: relative;
+    padding: 1rem;
+    display: grid;
+    gap: 1rem;
+    place-items: center;
+}
+
+.modal__close-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
+.modal form {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.modal form input {
+    border: 1px solid gray;
+    display: grid;
+    gap: 1rem;
+    padding: 0.2rem 0.2rem;
+    border-radius: 0.5rem;
+}
+
+.log-in-button {
+    padding: 0.2rem 1rem;
+    border: 2px solid #275079;
+    color: #275079;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.modal__createAccount-btn {
+    border: none;
+    color: #275079;
+    cursor: pointer;
+    padding: 0.5rem;
 }
 
 .logo {
@@ -113,9 +182,11 @@ img {
 .comments {
     list-style-type: none;
     margin-left: 0;
-    padding-left: 10px;
+    padding: 0px 10px;
     font-size: 0.85rem;
     border-top: 1px solid #00000020;
+    display: grid;
+    align-items: center;
 }
 
 .comments li {
@@ -123,6 +194,7 @@ img {
     letter-spacing: 0.2px;
     display: grid;
     grid-template-columns: 1fr auto;
+    align-items: center;
     padding: 0.2rem;
     border-bottom: 1px solid rgba(128, 128, 128, 0.219);
 }
@@ -143,7 +215,6 @@ img {
     /* width: 100%; */
     border-top: 1px solid #00000020;
     padding: 10px;
-    margin-top: 10px;
 }
 
 .comment-input {

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Card from "./components/Card";
-import Logo from "./components/logo";
-
+import Logo from "./components/Logo";
 function App() {
   const [cards, setCards] = useState([]);
   const [search, setSearch] = useState("");
+  const [showModal, setShowModal] = useState("");
   const getCardsFromServer = () => {
     fetch("http://localhost:3000/images")
       .then((resp) => resp.json())
@@ -33,8 +33,45 @@ function App() {
   };
   return (
     <div className="App">
-      <Logo />
-
+      {showModal === "signIn" ? (
+        <div
+          onClick={() => {
+            setShowModal("");
+          }}
+          className="modal-wrapper"
+        >
+          <div
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+            className="modal"
+          >
+            <button
+              onClick={() => setShowModal("")}
+              className="modal__close-btn"
+            >
+              X
+            </button>
+            <h2>Sign in</h2>
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+              }}
+            >
+              <input type="text" placeholder="Username: " />
+              <input type="text" placeholder="Password: " />
+              <button type="submit">Sign in</button>
+            </form>
+            <div>
+              <span>Not registred? </span>
+              <button className="modal__createAccount-btn">
+                Create an account!
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+      <Logo setShowModal={setShowModal} />
       <section className="image-container">
         <label className="search-label">
           Search by Title:
